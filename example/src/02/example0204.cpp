@@ -1,5 +1,10 @@
 #include <stdio.h>
 
+/*
+==>
+使用引用(&)替代指针操作
+<==
+*/
 int &demo()
 {
     int d = 0;
@@ -19,7 +24,8 @@ int &func()
 }
 
 /*
-ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/01$ ./a.out 
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/02$ g++ example0204.cpp
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/02$ ./a.out
 func: s = 0
 
 main: rs = 0
@@ -28,7 +34,7 @@ func: s = 11
 
 main: rs = 11
 
-ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/01$ 
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/02$
 */
 int main(int argc, char *argv[])
 {

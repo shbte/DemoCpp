@@ -2,43 +2,70 @@
 
 /*
 ==>
-C++语言中，引用的概念，相当于别名
+C++语言中，const把变量和常量值变为只读变量，但是可以使用指针法还改变const的值
+tip:
+    const不止可以修饰变量，也可以修饰常量值
 <==
 */
-void swap1(int *a, int *b)
-{
-    int t = *a;
-    *a = *b;
-    *b = t;
-}
 
-// c++语言新特征：引用
-void swap2(int &a, int &b)
+/*
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/01$ g++ ./example0102.cpp
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/01$ ./a.out
+int a = 4, const int& b = 4, int *p = 4
+int a = 5, const int& b = 5, int *p = 5
+int a = 7, const int& b = 7, int *p = 7
+
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/01$
+*/
+void test1()
 {
-    int t = a;
-    a = b;
-    b = t;
+    int a = 4;
+    const int &b = a;
+    int *p = (int *)&b;
+
+    printf("int a = %d, const int& b = %d, int *p = %d\n", a, b, *p);
+
+    a = 5;
+
+    printf("int a = %d, const int& b = %d, int *p = %d\n", a, b, *p);
+
+    // 报错信息：表达式必须是可修改的左值
+    // 变量b被const修饰，不能被再被修改
+    // b = 6;
+
+    *p = 7;
+
+    printf("int a = %d, const int& b = %d, int *p = %d\n", a, b, *p);
 }
 
 /*
-ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/01$ g++ ./example0102.cpp 
-ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/01$ ./a.out 
-a = 2, b = 1
-a = 1, b = 2
-ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/01$ 
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/01$ g++ ./example0102.cpp
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/01$ ./a.out
+
+const int& b = 1, int *p = 1
+const int& b = 7, int *p = 7
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/01$
 */
+void test2()
+{
+    const int &b = 1;
+    int *p = (int *)&b;
+
+    printf("const int& b = %d, int *p = %d\n", b, *p);
+
+    // 报错信息：表达式必须是可修改的左值
+    // 变量b被const修饰，不能被再被修改
+    // b = 6;
+
+    *p = 7;
+
+    printf("const int& b = %d, int *p = %d\n", b, *p);
+}
+
 int main()
 {
-    int a = 1;
-    int b = 2;
-
-    swap1(&a, &b);
-
-    printf("a = %d, b = %d\n", a, b);
-
-    swap2(a, b);
-
-    printf("a = %d, b = %d\n", a, b);
+    test1();
+    test2();
 
     return 0;
 }

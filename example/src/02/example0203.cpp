@@ -10,12 +10,13 @@ struct TRef
 };
 
 /*
-ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/01$ ./a.out
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/02$ g++ example0203.cpp
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/02$ ./a.out
 sizeof(char&) = 1
 sizeof(rc) = 1
 sizeof(TRef) = 8
 sizeof(ref.r) = 1
-ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/01$
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/02$
 */
 int main()
 {

@@ -2,26 +2,45 @@
 
 /*
 ==>
-C++语言中，三目运算符可直接返回变量本身
-    可能返回的值存在常量值时，三目运算符不可作为左值使用
+1、C++语言中，当碰见const声明时，将常量放入符号表(array[const int]：可行)
+2、后续使用常量时，则直接在符号表中的寻找值(符号表中的值不变，但是空间的值却变了)
+3、对const常量使用&( || 使用extern修饰在其它文件使用)时，才会分配空间
 
+tip：
+    C++语言中，const修饰的是真正意义的常量，存放在编译器的符号表中。
+    const常量去符号表中取值，指针去常量空间找值。
+
+    const常量和define(宏定义)不一样
+        const常量由编译器处理，进行类型检查和作用域检查
+        define由预处理器处理，单纯的文本替换
 <==
-ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/01$ g++ ./example0101.cpp
-ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/01$ ./a.out
-a = 3, b = 2
-ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/01$
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/01$ g++ ./example0101.cpp 
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/01$ ./a.out 
+Begin...
+c = 0
+*p = 0
+c = 0
+*p = 5
+End...
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/01$ 
 */
 int main()
 {
-    int a = 1;
-    int b = 2;
+    const int c = 0;
+    int *p = (int *)&c;
 
-    // 三目运算符可直接返回变量本身
-    (a < b ? a : b) = 3;
+    printf("Begin...\n");
 
-    // 报错信息：表达式必须是可修改的左值
-    // 当返回值可能是常量值时，不能作为左值使用
-    // (a < b ? 1 : b ) = 3;
+    printf("c = %d\n", c);
+    printf("*p = %d\n", *p);
 
-    printf("a = %d, b = %d\n", a, b);
+    *p = 5;
+
+    // c = 0 && *p = 5，说明c++语言虽然为const常量分配空间，但变量不会使用其存储空间内的值
+    printf("c = %d\n", c);
+    printf("*p = %d\n", *p);
+
+    printf("End...\n");
+
+    return 0;
 }

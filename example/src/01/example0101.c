@@ -2,16 +2,43 @@
 
 /*
 ==>
-C语言中，三目运算符的返回为值(而非变量本身)，不能作为左值使用
+1、C语言中，const使得变量具有只读属性(array[const int]：不可行)
+2、const将具有全局生命周期的变量存储于只读存储区
+3、const不能定义真正意义上的常量
+
+tip：
+    c语言真正意义上的常量只有枚举
 <==
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/01$ gcc ./example0101.c
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/01$ ./a.out 
+Begin...
+c = 0
+*p = 0
+c = 5
+*p = 5
+End...
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/01$ 
 */
 int main()
 {
-    int a = 1;
-    int b = 2;
+    const int c = 0;
+    int *p = (int *)&c;
 
-    // 报错信息：表达式必须是可修改的左值
-    // (a < b ? a : b ) = 3;
+    printf("Begin...\n");
 
-    printf("a = %d, b = %d\n", a, b);
+    printf("c = %d\n", c);
+    printf("*p = %d\n", *p);
+
+    *p = 5;
+
+    // c = 5，说明在c语言中，const不能定义真正意义上的常量，可以被间接改变
+    // 变量c不能直接改变，是由于变量c只具有只读属性，所以不能为左值
+    printf("c = %d\n", c);
+    printf("*p = %d\n", *p);
+
+    p++;
+
+    printf("End...\n");
+
+    return 0;
 }
