@@ -6,10 +6,10 @@ C++语言中，三目运算符可直接返回变量本身
     可能返回的值存在常量值时，三目运算符不可作为左值使用
 
 <==
-ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/02$ g++ ./example0201.cpp
-ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/02$ ./a.out
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/src/module01/00$ g++ ./module0100.cpp
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/src/module01/00$ ./a.out
 a = 3, b = 2
-ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/02$
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/src/module01/00$
 */
 int main()
 {

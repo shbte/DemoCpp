@@ -21,11 +21,11 @@ void swap2(int &a, int &b)
 }
 
 /*
-ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/02$ g++ ./example0202.cpp 
-ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/02$ ./a.out 
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/src/module01/01$ g++ ./module0101.cpp
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/src/module01/01$ ./a.out
 a = 2, b = 1
 a = 1, b = 2
-ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/02$ 
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/src/module01/01$
 */
 int main()
 {

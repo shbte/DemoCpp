@@ -1,4 +1,5 @@
 #include <stdio.h>
+// #include <iostream>
 
 void test01()
 {
@@ -8,6 +9,7 @@ void test01()
     {
         // 6 5 4 3 2 1 0
         printf("%d ", i);
+        // std::cout << i << std::endl;
     }
 
     puts("");

@@ -14,15 +14,15 @@ tip：
         const常量由编译器处理，进行类型检查和作用域检查
         define由预处理器处理，单纯的文本替换
 <==
-ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/01$ g++ ./example0101.cpp 
-ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/01$ ./a.out 
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/src/module00/00$ g++ ./module0000.cpp
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/src/module00/00$ ./a.out
 Begin...
 c = 0
 *p = 0
 c = 0
 *p = 5
 End...
-ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/01$ 
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/src/module00/00$
 */
 int main()
 {

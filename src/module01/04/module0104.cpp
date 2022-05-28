@@ -14,8 +14,8 @@ inline int func(int a, int b)
 }
 
 /*
-ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/02$ g++ example0205.cpp
-ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/02$ ./a.out
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/src/module01/04$ g++ ./module0104.cpp
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/src/module01/04$ ./a.out
 a = 2
 b = 3
 c = 2
@@ -23,7 +23,7 @@ c = 2
 a = 3
 b = 3
 c = 3
-ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/02$
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/src/module01/04$
 */
 int main()
 {

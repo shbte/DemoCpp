@@ -24,8 +24,7 @@ int &func()
 }
 
 /*
-ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/02$ g++ example0204.cpp
-ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/02$ ./a.out
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/src/module01/03$ ./a.out
 func: s = 0
 
 main: rs = 0
@@ -34,7 +33,7 @@ func: s = 11
 
 main: rs = 11
 
-ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/02$
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/src/module01/03$
 */
 int main(int argc, char *argv[])
 {

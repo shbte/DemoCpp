@@ -9,15 +9,15 @@
 tip：
     c语言真正意义上的常量只有枚举
 <==
-ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/01$ gcc ./example0101.c
-ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/01$ ./a.out 
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/src/module00/00$ gcc ./module0000.c
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/src/module00/00$ ./a.out
 Begin...
 c = 0
 *p = 0
 c = 5
 *p = 5
 End...
-ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/01$ 
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/src/module00/00$
 */
 int main()
 {

@@ -9,13 +9,13 @@ tip:
 */
 
 /*
-ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/01$ g++ ./example0102.cpp
-ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/01$ ./a.out
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/src/module00/01$ g++ ./module0001.cpp
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/src/module00/01$ ./a.out
 int a = 4, const int& b = 4, int *p = 4
 int a = 5, const int& b = 5, int *p = 5
 int a = 7, const int& b = 7, int *p = 7
 
-ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/01$
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/src/module00/01$
 */
 void test1()
 {
@@ -39,12 +39,12 @@ void test1()
 }
 
 /*
-ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/01$ g++ ./example0102.cpp
-ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/01$ ./a.out
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/src/module00/01$ g++ ./module0001.cpp
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/src/module00/01$ ./a.out
 
 const int& b = 1, int *p = 1
 const int& b = 7, int *p = 7
-ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/example/src/01$
+ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/src/module00/01$
 */
 void test2()
 {
