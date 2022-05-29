@@ -2,14 +2,19 @@
 
 /*
 ==>
-函数默认参数只能在函数声明中声明
+函数默认参数只能在函数声明或者定义中定义，不可以在声明中和定义中同时定义
 
     默认值从右向左提供
 
     函数调用是使用了默认值，则后续参数就必须使用默认值
 <==
 */
-int mul(int x = 0);
+int mul(int x, int y);
+
+int mul(int x = 0, int y = 1)
+{
+    return x * y;
+}
 
 /*
 void func() <==> void func(void)
@@ -26,8 +31,8 @@ void func(int = 0, int = 0)
 ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/src/module01/05$ g++ ./module0105.cpp
 ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/src/module01/05$ ./a.out
 0
-1
-4
+-1
+2
 ubuntu@ubuntu:~/Desktop/VSCode/PracticeCPP/src/module01/05$
 */
 int main()
@@ -40,9 +45,4 @@ int main()
     func(1, 2);
 
     return 0;
-}
-
-int mul(int x)
-{
-    return x * x;
 }
