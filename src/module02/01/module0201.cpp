@@ -4,7 +4,7 @@
 ==>
 C++中通过new关键字进行动态内存申请
 C++中的动态内存申请是基于类型进行的
-delete关键字用于内存释放
+delete关键字用于内存释放(内存释放知识标记可以被复用，而不是一定破坏内存中的值)
     变量释放：delete
     数组释放：delete[]
 
@@ -82,9 +82,10 @@ void out(int *p, int nSize)
     int tmp = nSize;
     while (nSize--)
     {
-        std::cout << "p[" << tmp - nSize << "]= " << *p << "  " << std::endl;
+        std::cout << "p[" << tmp - nSize << "]= " << *p << ", address=" << p << std::endl;
         p++;
     }
+    std::cout << std::endl;
 }
 
 int *newArray(int nSize)
@@ -96,10 +97,6 @@ int *newArray(int nSize)
         p[i] = i + 1;
     }
 
-    out(p, nSize);
-
-    // delete只能释放数组的部分内存
-    delete p;
     out(p, nSize);
 
     delete[] p;
@@ -126,7 +123,6 @@ int main()
 
     int nSize = 10;
     p = newArray(nSize);
-    std::cout << std::endl;
 
     out(p, nSize);
 
