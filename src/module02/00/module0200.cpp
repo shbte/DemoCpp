@@ -67,10 +67,13 @@ int fun(char c, int i)
 }
 
 /*
-编译命令：先将c文件编译成二进制文件，然后再将c++和二进制文件一起编译，以达到C++和C的相互调用
+编译命令：
     gcc -c ./module0200.c -o ./module0200.o
+        c文件编译成二进制文件
     g++ ./module0200.cpp ./module0200.o
-    ./a.out 
+        将c++和二进制文件一起以c++方式编译
+        在c++中利用extren关键字指定c方式并编译c头文件，以达到C++和C的相互调用
+    ./a.out
 */
 int main()
 {
