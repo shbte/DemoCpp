@@ -17,13 +17,18 @@ private:
     int m_i = 0;
     long m_l = 10;
     static int s_i; // 静态成员变量不可以在类内进行初始化
+    A(int a, int b)
+    {
+        std::cout << "A(int a, int b)" << std::endl;
+    };
+    void test(){};
 
 public:
     A(int i);
     static int s_pi;
     void setMI(int i);
     int getMI();
-    static void setML(A& a, long l);
+    static void setML(A &a, long l);
     int getML();
     void setSI(int i);
     int getSI();
@@ -49,10 +54,15 @@ int A::getMI()
     return m_i;
 }
 
-void A::setML(A& a, long l)
+void A::setML(A &a, long l)
 {
     // m_i; // 静态成员函数不能访问普通成员变量
     a.m_i; // 通过对象，静态成员函数可以访问普通成员变量
+
+    A* tmpA = new A(1, 2); // 静态成员函数可以直接访问私有构造函数
+    delete tmpA;
+
+    // test(); // 静态成员函数不可以直接访问私有普通成员函数
 
     a.m_l = l;
 }
