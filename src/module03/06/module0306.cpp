@@ -59,8 +59,12 @@ void A::setML(A &a, long l)
     // m_i; // 静态成员函数不能访问普通成员变量
     a.m_i; // 通过对象，静态成员函数可以访问普通成员变量
 
-    A* tmpA = new A(1, 2); // 静态成员函数可以直接访问私有构造函数
-    delete tmpA;
+    A *tmpA1 = new A(1); // 静态成员函数可以直接访问私有构造函数
+    A *tmpA2 = new A(1, 2); // 静态成员函数可以直接访问私有构造函数
+    delete tmpA1;
+    delete tmpA2;
+
+    // fun(); // 静态成员函数不能直接访问全局函数
 
     // test(); // 静态成员函数不可以直接访问私有普通成员函数
 
@@ -87,8 +91,15 @@ A::~A()
     std::cout << "~A()" << std::endl;
 }
 
+void fun()
+{
+    std::cout << "fun()" << std::endl;
+}
+
 int main()
 {
+    fun();
+
     A a(3);
     std::cout << "m_i=" << a.getMI() << std::endl;
     a.setMI(5);
