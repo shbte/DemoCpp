@@ -11,6 +11,8 @@
 通过对象名直接调用       Yes             Yes
 <==
 */
+void fun();
+
 class A
 {
 private:
@@ -64,7 +66,7 @@ void A::setML(A &a, long l)
     delete tmpA1;
     delete tmpA2;
 
-    // fun(); // 静态成员函数不能直接访问全局函数
+    fun(); // 静态成员函数能直接访问全局函数，之前访问不到是因为所调用的全局函数写在了该函数后面，又没有提前声明，违背了从上而下的执行的特性
 
     // test(); // 静态成员函数不可以直接访问私有普通成员函数
 
@@ -93,7 +95,7 @@ A::~A()
 
 void fun()
 {
-    std::cout << "fun()" << std::endl;
+    std::cout << "G::fun()" << std::endl;
 }
 
 int main()

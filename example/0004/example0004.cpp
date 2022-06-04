@@ -19,29 +19,49 @@ static成员函数不能调用non-static成员函数
 https://blog.51cto.com/u_15127513/3783216
 <==
 */
+int func()
+{
+    std::cout << "G::func()" << std::endl;
+
+    return 0;
+}
+
 class A
 {
     int m_i;
+    A()
+    {
+        std::cout << "A()" << std::endl;
+    }
 
 public:
+    void fun1()
+    {
+        std::cout << "fun1()" << std::endl;
+    }
+
     static void callFun()
     {
         std::cout << "A:callFun()" << std::endl;
 
         // 静态成员函数调用全局函数func()
         func();
+
+        new A();
+    }
+
+    void fun2()
+    {
+        std::cout << "fun2()" << std::endl;
     }
 };
-
-void func()
-{
-    std::cout << "func()" << std::endl;
-}
 
 int main()
 {
 
     A::callFun();
+
+    func();
 
     return 0;
 }
