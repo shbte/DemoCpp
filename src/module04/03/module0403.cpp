@@ -1,5 +1,10 @@
 #include <iostream>
 
+/*
+==>
+自定义类的左移操作符重载时，返回的是引用对象，以达到连续引用的目的
+<==
+*/
 const char endl = '\n';
 
 class Console
@@ -8,7 +13,7 @@ private:
     int i;
 
 public:
-    Console &operator<<(const int i)
+    Console &operator<<(const int i) // 返回的是引用对象，以达到连续引用的目的
     {
 
         printf("%d", i);

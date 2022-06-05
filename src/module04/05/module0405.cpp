@@ -24,12 +24,12 @@ class A
     int a[5];
 
 public:
-    int &operator[](int i)
+    int &operator[](int i) // 返回引用对象，用以赋值
     {
         return a[i];
     }
 
-    int operator[](const string s)
+    int operator[](const string s) // 返回对象值，用以打印输出
     {
         if (s == "1th")
         {
