@@ -25,13 +25,13 @@ private:
 public:
     A()
     {
-        std::cout << "m_i=" << m_i << std::endl;
+        std::cout << "A()::m_i=" << m_i << std::endl;
     }
 
     A(int i)
     {
         m_i = i;
-        std::cout << "m_i=" << m_i << std::endl;
+        std::cout << "A(int i)::m_i=" << m_i << std::endl;
     }
 
     ~A()
@@ -65,9 +65,9 @@ int main()
 
     A(6);
 
-    A a5 = getA(); // ==> A a5 = A(5); ==> A a5 = 5;当代的g++编译器在不影响最终结果的前提下，尽量的避免临时对象的产生
+    A a5 = getA(); // ==> A a5 = A(5); ==> A a5(5);当代的g++编译器在不影响最终结果的前提下，尽量的避免临时对象的产生
 
-    A a4 = A(4); // ==> A a4 = 4; 这里并没有产生临时对象，因为编译器对其进行了效率优化
+    A a4 = A(4); // ==> A a4(4); 这里并没有产生临时对象，因为编译器对其进行了效率优化
 
     return 0;
 }
