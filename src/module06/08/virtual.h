@@ -3,7 +3,7 @@
 
 // 面向对象的三大特性：封装、继承、多态
 
-// 封装(void保证外界无法通过具体对象访问)
+// 封装(void保证外界无法通过具体对象访问)，DemoClass和Device不在头文件中定义，所以访问不到
 typedef void Demo;
 typedef void Device;
 

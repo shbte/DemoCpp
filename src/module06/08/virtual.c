@@ -3,12 +3,29 @@
 #include <stdio.h>
 #include <malloc.h>
 
+// 虚函数表结构，保存虚函数地址
+struct VTable
+{
+    int (*fun)(void *, int);
+};
+
+// 函数声明，需提前声明，虚函数表中需要使用
+static int Virtual_Demo_Add(void *ptr_demo, int value);
+static int Virtual_Device_Add(void *ptr_device, int value);
+// 父类虚函数表
+static struct VTable g_Virtual_Demo_Add = {Virtual_Demo_Add}; // 第二步：虚函数表中取出函数指针
+// 子类虚函数表
+static struct VTable g_Virtual_Device_Add = {Virtual_Device_Add};
+
+// 父类结构体对象
 struct DemoClass
 {
+    struct VTable *pVir; // 虚函数表指针，指向具体(父类、子类)函数地址
     int mi;
     int mj;
 };
 
+// 子类结构体对象
 struct DeviceClass
 {
     struct DemoClass demo; // 继承(子类拥有父类的成员)
@@ -25,6 +42,8 @@ Demo *Demo_Create(int i, int j)
     // 开辟成功时，结构体成员赋值
     if (result)
     {
+        // result->pVir = &Virtual_Demo_Add; // 要体现出从虚函数表中返回地址，该方式没体现出虚函数表作用
+        result->pVir = &g_Virtual_Demo_Add; // 第一步：虚函数指针指向虚函数表
         result->mi = i;
         result->mj = j;
     }
@@ -62,6 +81,18 @@ int Demo_Add(Demo *pThis, int value)
     // 获取结构体对象指针(Demo*=>DemoClass*)
     struct DemoClass *ptr_demo = (struct DemoClass *)pThis;
 
+    // 父类对象从虚函数表中获取父类虚函数方法地址，然后调用
+    int ret = ptr_demo->pVir->fun(pThis, value);
+
+    return ret;
+}
+
+// 父类虚函数方法
+int Virtual_Demo_Add(Demo *pThis, int value)
+{
+    // 获取结构体对象指针(Demo*=>DemoClass*)
+    struct DemoClass *ptr_demo = (struct DemoClass *)pThis;
+
     int ret = ptr_demo->mi + ptr_demo->mj + value;
 
     return ret;
@@ -76,6 +107,7 @@ Device *Device_Create(int i, int j, int k)
 
     if (result)
     {
+        result->demo.pVir = &g_Virtual_Device_Add;
         result->demo.mi = i;
         result->demo.mj = j;
         result->mk = k;
@@ -110,6 +142,18 @@ int Device_GetK(Device *pThis)
 }
 
 int Device_Add(Device *pThis, int value)
+{
+    // 获取结构体对象(DeviceClass)指针
+    struct DeviceClass *ptr_device = (struct DeviceClass *)pThis;
+
+    // 子类对象从虚函数表中获取子类虚函数方法地址，然后调用
+    int ret = ptr_device->demo.pVir->fun(pThis, value);
+
+    return ret;
+}
+
+// 子类虚函数方法
+int Virtual_Device_Add(Device *pThis, int value)
 {
     // 获取结构体对象(DeviceClass)指针
     struct DeviceClass *ptr_device = (struct DeviceClass *)pThis;
