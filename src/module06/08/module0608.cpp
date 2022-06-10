@@ -29,6 +29,31 @@ extern "C"
     gcc -c ./virtual.c -o ./virtual.o
     g++ ./module0608.cpp ./virtual.o
     ./a.out
+
+log：
+Demo::mi = 1, mj = 2
+Device::mi = 1, mj = 2, mk = 3
+
+Demo.value + 8 = 
+Demo_Add(Demo *pThis, int value)
+Virtual_Demo_Add(Demo *pThis, int value)
+11
+Device.value + 8 = 
+Device_Add(Device *pThis, int value)
+Virtual_Device_Add(Device *pThis, int value)
+14
+
+run(ptr_demo, 8) = 
+Demo_Add(Demo *pThis, int value)
+Virtual_Demo_Add(Demo *pThis, int value)
+11
+run(ptr_device, 8) = 
+Demo_Add(Demo *pThis, int value)    => 子类的父类对象调用虚函数接口，进入子类函数
+Virtual_Device_Add(Device *pThis, int value)
+14
+
+free::this=0x562c261e1eb0
+free::this=0x562c261e1ed0
 <==
 */
 int run(void *p, int value)

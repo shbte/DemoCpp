@@ -76,8 +76,11 @@ int Demo_GetJ(Demo *pThis)
     return ret;
 }
 
+// 外界调用函数和虚函数接口，父类和子类的父类对象通过该函数调用虚函数
 int Demo_Add(Demo *pThis, int value)
 {
+    puts("\nDemo_Add(Demo *pThis, int value)");
+
     // 获取结构体对象指针(Demo*=>DemoClass*)
     struct DemoClass *ptr_demo = (struct DemoClass *)pThis;
 
@@ -90,6 +93,8 @@ int Demo_Add(Demo *pThis, int value)
 // 父类虚函数方法
 int Virtual_Demo_Add(Demo *pThis, int value)
 {
+    puts("Virtual_Demo_Add(Demo *pThis, int value)");
+
     // 获取结构体对象指针(Demo*=>DemoClass*)
     struct DemoClass *ptr_demo = (struct DemoClass *)pThis;
 
@@ -141,8 +146,11 @@ int Device_GetK(Device *pThis)
     return ret;
 }
 
+// 外界调用函数，当使用虚函数表时，不使用该函数
 int Device_Add(Device *pThis, int value)
 {
+    puts("\nDevice_Add(Device *pThis, int value)");
+
     // 获取结构体对象(DeviceClass)指针
     struct DeviceClass *ptr_device = (struct DeviceClass *)pThis;
 
@@ -155,6 +163,8 @@ int Device_Add(Device *pThis, int value)
 // 子类虚函数方法
 int Virtual_Device_Add(Device *pThis, int value)
 {
+    puts("Virtual_Device_Add(Device *pThis, int value)");
+
     // 获取结构体对象(DeviceClass)指针
     struct DeviceClass *ptr_device = (struct DeviceClass *)pThis;
     // 获取结构体对象(DeviceClass)成员demo指针
