@@ -32,54 +32,66 @@ private:
 public:
     A(int i)
     {
-        cout << "A(int i)::i=" << i << endl;
+        cout << "A(int i)::i=" << i << ", this = " << this << endl;
 
         this->m_i = i;
     }
 
+    A(const A &a)
+    {
+        this->m_i = a.m_i;
+        cout << "A::A(const A &a)::this = " << this << ", &a = " << &a << endl;
+    }
+
     int value() const // const对象只能调用const成员函数
     {
+        // cout << "A::value()" << endl;
         return this->m_i;
     }
 
     ~A()
     {
-        cout << "~A()::m_i=" << this->m_i << endl;
+        cout << "~A()::m_i=" << this->m_i << ", this = " << this << endl;
     }
 };
 
 // 重载逻辑操作符&&
 bool operator&&(const A &a1, const A &a2)
 {
+    cout << "operator&&::&a1 = " << &a1 << ", &a2 = " << &a2 << endl;
     return a1.value() && a2.value();
 }
 
 // 重载逻辑操作符||
 bool operator||(const A &a1, const A &a2)
 {
+    cout << " operator||::&a1 = " << &a1 << ", &a2 = " << &a2 << endl;
     return a1.value() || a2.value();
 }
 
 // 重载逗号操作符
 A &operator,(const A &a1, const A &a2)
 {
+    cout << "&operator,::&a1 = " << &a1 << ", &a2 = " << &a2 << endl;
     return const_cast<A &>(a2);
 }
 
 A fun(A a)
 {
-    cout << "func(A a)::a.m_i=" << a.value() << endl;
+    cout << "func(A a)::a.m_i=" << a.value() << ", &a = " << &a << endl;
 
     return a;
 }
 
 int main()
 {
-    A a0(0);
-    A a1(1);
+    A a0(2);
+    A a1(3);
+    cout << endl;
 
     // 逻辑操作符重载后无法完全实现原生的语义
-    if (fun(a0) && fun(a1)) // 1、短路法则完全失效。2、进入函数体前必须完成所有参数的计算。3、函数参数的计算次序时不定的。
+    // 1、短路法则完全失效。2、进入函数体前必须完成所有参数的计算。3、函数参数的计算次序时不定的。
+    if (fun(a0) && fun(a1))
     {
         cout << "Result is true." << endl;
     }
@@ -87,6 +99,7 @@ int main()
     {
         cout << "Result is false." << endl;
     }
+    cout << endl;
 
     A a2 = (fun(a0), fun(a1));
     cout << "a2.value=" << a2.value() << endl;
