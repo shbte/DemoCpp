@@ -22,7 +22,7 @@ try...catch可以直接将函数实现分隔为2部分
     异常声明能够提供程序的可读性
 <==
 */
-int func1(int i) // throw(char)
+int func1(int i) // throw(char) throw(optional_type_list)规范在 C++11 中被弃用，在 C++17 中删除，但该throw()规范是别名noexcept(true)
 {
     if ( i = 10)
     {
