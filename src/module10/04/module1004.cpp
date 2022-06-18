@@ -50,12 +50,13 @@ void func1()
     int a[2] = {0};
     cout << "a0 = " << a[0] << ", a1 = " << a[1] << ", a = " << a << endl;
 
-    struct Demo{
+    struct Demo
+    {
         int x;
         int y;
     };
 
-    Demo* pd = new(a) Demo(); // 利用a的空间，在空间a上面创建Demo对象
+    Demo *pd = new (a) Demo(); // 利用a的空间，在空间a上面创建Demo对象
 
     pd->x = 1;
     pd->y = 2;
@@ -82,7 +83,7 @@ public:
     }
 
     // 重载new函数，返回NULL
-    void *operator new(unsigned long size)
+    void *operator new(unsigned long size) throw() // throw()可以让该函数不抛出异常
     {
         cout << "operator new(unsigned long size)" << endl;
 
@@ -100,6 +101,8 @@ public:
 void func2()
 {
     Base *pb = new Base();
+
+    cout << "pb = " << pb << endl;
 
     delete pb;
 }
